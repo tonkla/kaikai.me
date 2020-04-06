@@ -1,5 +1,3 @@
 <svelte:head>
-  <title>KaiKai</title>
+  <title>HOME</title>
 </svelte:head>
-
-<h1>Home</h1>

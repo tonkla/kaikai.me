@@ -1,14 +1,17 @@
 <script>
   import Tailwindcss from '../components/Tailwindcss.svelte'
-  import Nav from '../components/Nav.svelte'
+  import Header from '../components/Header.svelte'
+  import Footer from '../components/Footer.svelte'
 
   export let segment
 </script>
 
 <Tailwindcss />
 
-<Nav {segment} />
+<Header {segment} />
 
-<main>
+<main class="mt-10">
   <slot />
 </main>
+
+<Footer {segment} />
