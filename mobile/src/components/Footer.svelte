@@ -10,6 +10,8 @@
     faStore,
   } from '@fortawesome/free-solid-svg-icons'
 
+  import lang from '../locales/th.json'
+
   export let segment
 </script>
 
@@ -29,26 +31,18 @@
   class="fixed inset-x-0 bottom-0 h-12 px-3 bg-gray-300 border-t border-gray-400 flex items-stretch">
   <button class="btn" class:active={segment === undefined} on:click={() => goto('/')}>
     <Fa icon={faHome} class="text-lg" />
-    <span class="text-xs ">HOME</span>
+    <span class="text-xs ">{lang.nav.home}</span>
   </button>
-  <button class="btn" class:active={segment === 'give'} on:click={() => goto('/give')}>
-    <Fa icon={faGift} class="text-lg" />
-    <span class="text-xs">GIVE</span>
-  </button>
-  <button class="btn" class:active={segment === 'gain'} on:click={() => goto('/gain')}>
+  <button class="btn" class:active={segment === 'charity'} on:click={() => goto('/charity')}>
     <Fa icon={faHandHoldingHeart} class="text-lg" />
-    <span class="text-xs">GAIN</span>
+    <span class="text-xs">{lang.nav.gain}/{lang.nav.give}</span>
   </button>
-  <button class="btn" class:active={segment === 'sell'} on:click={() => goto('/sell')}>
-    <Fa icon={faStore} class="text-lg" />
-    <span class="text-xs">SELL</span>
-  </button>
-  <button class="btn" class:active={segment === 'buy'} on:click={() => goto('/buy')}>
+  <button class="btn" class:active={segment === 'commerce'} on:click={() => goto('/commerce')}>
     <Fa icon={faShoppingCart} class="text-lg" />
-    <span class="text-xs">BUY</span>
+    <span class="text-xs">{lang.nav.buy}/{lang.nav.sell}</span>
   </button>
   <button class="btn" class:active={segment === 'post'} on:click={() => goto('/post')}>
     <Fa icon={faBullhorn} class="text-lg" />
-    <span class="text-xs">POST</span>
+    <span class="text-xs">{lang.nav.post}</span>
   </button>
 </footer>

@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
 import svelte from 'rollup-plugin-svelte'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
@@ -40,6 +41,7 @@ export default {
         dedupe,
       }),
       commonjs(),
+      json(),
 
       legacy &&
         babel({
@@ -91,6 +93,7 @@ export default {
         dedupe,
       }),
       commonjs(),
+      json(),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require('module').builtinModules || Object.keys(process.binding('natives'))
@@ -109,6 +112,7 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       commonjs(),
+      json(),
       !dev && terser(),
     ],
 
