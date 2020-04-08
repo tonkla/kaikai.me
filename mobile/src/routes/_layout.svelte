@@ -12,10 +12,20 @@
 
 <Tailwindcss />
 
-<Header {segment} />
+{#if segment !== 'login'}
+  <Header {segment} />
+{/if}
 
-<main class="mt-10">
-  <slot />
-</main>
+{#if segment !== 'login'}
+  <main class="mt-10">
+    <slot />
+  </main>
+{:else}
+  <main class="p-3">
+    <slot />
+  </main>
+{/if}
 
-<Footer {segment} />
+{#if segment !== 'login'}
+  <Footer {segment} />
+{/if}

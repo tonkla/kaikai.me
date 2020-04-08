@@ -3,7 +3,7 @@
 
   import { userStore } from '../store'
 
-  let user
+  let user = null
 
   const unsubscribe = userStore.subscribe(value => (user = value))
 

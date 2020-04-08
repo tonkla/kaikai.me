@@ -7,7 +7,7 @@
     faHandHoldingHeart,
     faHome,
     faShoppingCart,
-    faStore,
+    faStore
   } from '@fortawesome/free-solid-svg-icons'
 
   import lang from '../locales/th.json'
@@ -20,7 +20,7 @@
     @apply p-2 leading-snug text-gray-600 flex-1 flex flex-col items-center select-none;
   }
   .btn:focus {
-    @apply outline-none;
+    @apply outline-none border-transparent;
   }
   .active {
     @apply text-red-500;
