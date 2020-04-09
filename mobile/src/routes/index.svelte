@@ -1,14 +1,16 @@
 <script>
-  import { onDestroy } from 'svelte'
+  import { onMount } from 'svelte'
 
   import { userStore } from '../store'
 
   let user = null
 
-  const unsubscribe = userStore.subscribe(value => (user = value))
+  userStore.subscribe(value => (user = value))
 
-  onDestroy(() => {
-    unsubscribe()
+  onMount(() => {
+    if (!user) {
+      userStore.set({ name: 'Admin', pictureUrl: 'https://i.pravatar.cc/100' })
+    }
   })
 
   function signOut() {
@@ -16,9 +18,4 @@
   }
 </script>
 
-{#if user}
-  <div>
-    <div>{user.name}</div>
-    <button on:click={signOut}>Sign out</button>
-  </div>
-{/if}
+<div class="p-2" />

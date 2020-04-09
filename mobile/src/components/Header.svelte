@@ -1,20 +1,11 @@
 <script>
-  import { onDestroy } from 'svelte'
-  import { goto } from '@sapper/app'
   import Fa from 'svelte-fa'
-  import { faChevronLeft, faSearch, faSlidersH, faUser } from '@fortawesome/free-solid-svg-icons'
+  import { faChevronLeft, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 
-  import { userStore } from '../store'
+  import Avatar from './Avatar.svelte'
   import lang from '../locales/th.json'
 
-  let user = null
   export let segment
-
-  const unsubscribe = userStore.subscribe(value => (user = value))
-
-  onDestroy(() => {
-    unsubscribe()
-  })
 
   function back() {
     window.history.back()
@@ -33,27 +24,7 @@
       <Fa icon={faChevronLeft} />
     </button>
   {:else}
-    <button class="btn ml-2" on:click={() => goto('/login')}>
-      {#if user}
-        {#if user.pictureUrl}
-          <div class="h-8 w-8">
-            <img src={user.pictureUrl} alt="avatar" class="h-8 w-8 rounded-full" />
-          </div>
-        {:else}
-          <div
-            class="h-8 w-8 border border-gray-400 rounded-full text-md text-gray-600 flex
-            items-center justify-center">
-            <Fa icon={faUser} />
-          </div>
-        {/if}
-      {:else}
-        <div
-          class="h-8 w-8 border border-gray-400 rounded-full text-md text-gray-600 flex items-center
-          justify-center">
-          <Fa icon={faUser} />
-        </div>
-      {/if}
-    </button>
+    <Avatar />
     <div class="relative ml-2 mr-1 flex-1 flex items-center">
       <input
         class="w-full pl-5 pr-8 py-1 border rounded-full text-sm bg-gray-100 focus:bg-white"

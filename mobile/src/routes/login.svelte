@@ -1,5 +1,5 @@
 <script>
-  import { onMount, onDestroy } from 'svelte'
+  import { onMount } from 'svelte'
   import { goto } from '@sapper/app'
   import Fa from 'svelte-fa'
   import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -13,14 +13,10 @@
   let email = ''
   let showMessage = false
 
-  const unsubscribe = userStore.subscribe(value => (user = value))
+  userStore.subscribe(value => (user = value))
 
   onMount(() => {
     if (user) goto('/')
-  })
-
-  onDestroy(() => {
-    unsubscribe()
   })
 
   function signIn() {
@@ -35,7 +31,7 @@
     setTimeout(async () => {
       userStore.update(() => ({ name: 'Admin', pictureUrl: 'https://i.pravatar.cc/100' }))
       await goto('/')
-    }, 1000)
+    }, 1500)
   }
 </script>
 
