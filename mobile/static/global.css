@@ -15,3 +15,21 @@ body {
   font-weight: 300;
   color: rgba(0, 0, 0, 0.8);
 }
+
+.ant-alert {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.ant-alert-success {
+  border: 1px solid #b7eb8f;
+  background-color: #f6ffed;
+}
+.ant-alert-success-icon {
+  color: #52c41a;
+  font-size: 1.25rem;
+}
+.ant-alert-message {
+  margin-left: 0.5rem;
+}

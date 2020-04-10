@@ -5,12 +5,14 @@
     @apply flex items-center justify-center select-none;
     -webkit-tap-highlight-color: transparent;
   }
-
   button:focus,
   input:focus {
-    @apply outline-none border border-blue-400;
+    border-color: #40a9ff;
+    outline: none;
   }
-
+  button:focus {
+    color: #40a9ff;
+  }
   button:disabled,
   input:disabled {
     @apply bg-gray-100 text-gray-400;

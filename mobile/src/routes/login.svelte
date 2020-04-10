@@ -47,9 +47,9 @@
     </button>
   </div>
   {#if showMessage}
-    <div class="mt-2 p-2 border border-green-500 rounded-lg flex items-center">
-      <Fa icon={faCheckCircle} class="text-xl text-green-500" />
-      <span class="ml-2">{lang.login.signInMessage}</span>
+    <div class="ant-alert ant-alert-success mt-2">
+      <Fa icon={faCheckCircle} class="ant-alert-success-icon" />
+      <span class="ant-alert-message">{lang.login.signInMessage}</span>
     </div>
   {/if}
 </div>
