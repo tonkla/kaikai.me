@@ -23,10 +23,7 @@
   }
 </style>
 
-<button
-  id="btnAvatar"
-  class="btn ml-2"
-  on:click={() => drawerStore.set({ init: true, show: true })}>
+<button id="btnDrawer" class="btn ml-2" on:click={() => drawerStore.set(true)}>
   {#if user}
     {#if user.pictureUrl}
       <div class="h-8 w-8">

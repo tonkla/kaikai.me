@@ -10,7 +10,7 @@
   let user = null
   let txtEmail = null
   let btnSignIn = null
-  let email = ''
+  let email = 'admin@kaikai.me'
   let showMessage = false
 
   userStore.subscribe(value => (user = value))
@@ -41,13 +41,13 @@
       bind:this={txtEmail}
       bind:value={email}
       placeholder={lang.login.email}
-      class="px-3 py-2 border rounded flex-1" />
-    <button bind:this={btnSignIn} on:click={signIn} class="px-4 py-2 border rounded ml-2">
+      class="px-3 py-2 border rounded-lg flex-1" />
+    <button bind:this={btnSignIn} on:click={signIn} class="px-4 py-2 border rounded-lg ml-2">
       {lang.login.signIn}
     </button>
   </div>
   {#if showMessage}
-    <div class="mt-2 p-2 border border-green-500 rounded flex items-center">
+    <div class="mt-2 p-2 border border-green-500 rounded-lg flex items-center">
       <Fa icon={faCheckCircle} class="text-xl text-green-500" />
       <span class="ml-2">{lang.login.signInMessage}</span>
     </div>

@@ -1,10 +1,6 @@
 <style global>
   @tailwind base;
 
-  body {
-    @apply text-base text-gray-900 font-light;
-  }
-
   button {
     @apply flex items-center justify-center select-none;
     -webkit-tap-highlight-color: transparent;

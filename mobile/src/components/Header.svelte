@@ -19,7 +19,7 @@
 </style>
 
 <header class="fixed inset-x-0 top-0 h-10 bg-gray-300 inline-flex items-center">
-  {#if segment}
+  {#if segment === 'subpage'}
     <button class="btn h-8 w-8 pl-2 ml-1 justify-start text-xl text-gray-600" on:click={back}>
       <Fa icon={faChevronLeft} />
     </button>
@@ -27,7 +27,8 @@
     <Avatar />
     <div class="relative ml-2 mr-1 flex-1 flex items-center">
       <input
-        class="w-full pl-5 pr-8 py-1 border rounded-full text-sm bg-gray-100 focus:bg-white"
+        class="w-full pl-5 pr-8 py-1 border border-transparent rounded-full text-sm bg-gray-100
+        focus:bg-white focus:border-gray-400"
         placeholder={lang.search} />
       <button class="absolute right-0 mr-2 p-2 text-sm text-gray-600 focus:border-transparent">
         <Fa icon={faSearch} />

@@ -1,12 +1,21 @@
 <script>
+  import { onMount } from 'svelte'
+  import { fade, fly } from 'svelte/transition'
   import { goto } from '@sapper/app'
+  import Fa from 'svelte-fa'
+  import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
   import { drawerStore, userStore } from '../store'
 
-  let drawer = { init: false, show: false }
+  let showDrawer = false
   let user = null
+  let height = 0
 
-  drawerStore.subscribe(value => (drawer = value))
+  onMount(() => {
+    height = document.getElementsByTagName('html')[0].offsetHeight || 1000
+  })
+
+  drawerStore.subscribe(value => (showDrawer = value))
   userStore.subscribe(value => (user = value))
 
   function clickOutside(node, onEventFunction) {
@@ -25,7 +34,7 @@
     const isParent = target => {
       let parent = target.parentNode
       while (parent !== null) {
-        if (parent.id === 'btnAvatar') {
+        if (parent.id === 'btnDrawer') {
           return true
         } else {
           parent = parent.parentNode
@@ -49,6 +58,11 @@
     }
   }
 
+  function signIn() {
+    drawerStore.set(false)
+    goto('/login')
+  }
+
   function signOut() {
     userStore.set(null)
   }
@@ -61,71 +75,41 @@
     position: absolute;
     left: 0;
     top: 0;
-  }
-  .drawer-overlay.fade-in {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  .drawer-overlay.fade-out {
-    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 
   .drawer {
-    height: 100vh;
-    width: 70%;
+    height: 100%;
+    width: 100%;
     position: absolute;
     left: 0;
-    top: 0;
-    transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-  }
-  .drawer.slide-in {
-    animation: slide-in 0.4s forwards;
-    -webkit-animation: slide-in 0.4s forwards;
-  }
-  .drawer.slide-out {
-    animation: slide-out 0.4s forwards;
-    -webkit-animation: slide-out 0.4s forwards;
-  }
-  @keyframes slide-in {
-    100% {
-      transform: translateX(0%);
-    }
-  }
-  @-webkit-keyframes slide-in {
-    100% {
-      -webkit-transform: translateX(0%);
-    }
-  }
-  @keyframes slide-out {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  @-webkit-keyframes slide-out {
-    0% {
-      -webkit-transform: translateX(0%);
-    }
-    100% {
-      -webkit-transform: translateX(-100%);
-    }
+    top: 4rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
   }
 </style>
 
-{#if drawer.init}
-  <div class="drawer-overlay" class:fade-in={drawer.show} class:fade-out={!drawer.show} />
+{#if showDrawer}
+  <div class="drawer-overlay" transition:fade />
   <div
-    class="drawer bg-gray-500 p-2"
-    class:slide-in={drawer.show}
-    class:slide-out={!drawer.show}
-    use:clickOutside={() => drawerStore.set({ init: true, show: false })}>
+    class="drawer"
+    in:fly={{ y: height }}
+    out:fly={{ y: height }}
+    use:clickOutside={() => drawerStore.set(false)}>
+    <div class="flex justify-end">
+      <button
+        on:click={() => drawerStore.set(false)}
+        class="h-8 w-8 p-2 rounded-full focus:border-transparent">
+        <Fa icon={faTimes} class="text-lg text-gray-600" />
+      </button>
+    </div>
     {#if user}
       <div>{user.name}</div>
       <div on:click={signOut}>Sign out</div>
     {:else}
-      <div on:click={() => goto('/login')}>Sign in</div>
+      <div on:click={signIn}>Sign in</div>
     {/if}
   </div>
 {/if}
