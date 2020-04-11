@@ -2,11 +2,7 @@
   import Fa from 'svelte-fa'
   import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-  import { drawerStore, userStore } from '../store'
-
-  let user = null
-
-  userStore.subscribe(value => (user = value))
+  import { showDrawer, user } from '../store'
 </script>
 
 <style>
@@ -23,11 +19,11 @@
   }
 </style>
 
-<button id="btnDrawer" class="btn ml-2" on:click={() => drawerStore.set(true)}>
-  {#if user}
-    {#if user.pictureUrl}
+<button id="btnDrawer" class="btn ml-2" on:click={() => ($showDrawer = true)}>
+  {#if $user}
+    {#if $user.pictureUrl}
       <div class="h-8 w-8">
-        <img src={user.pictureUrl} alt="avatar" />
+        <img src={$user.pictureUrl} alt="avatar" />
       </div>
     {:else}
       <div

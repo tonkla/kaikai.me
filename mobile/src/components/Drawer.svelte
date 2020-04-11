@@ -5,18 +5,13 @@
   import Fa from 'svelte-fa'
   import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-  import { drawerStore, userStore } from '../store'
+  import { showDrawer, user } from '../store'
 
-  let showDrawer = false
-  let user = null
   let height = 0
 
   onMount(() => {
     height = document.getElementsByTagName('html')[0].offsetHeight || 1000
   })
-
-  drawerStore.subscribe(value => (showDrawer = value))
-  userStore.subscribe(value => (user = value))
 
   function clickOutside(node, onEventFunction) {
     const isNestedChild = (parent, child) => {
@@ -59,12 +54,12 @@
   }
 
   function signIn() {
-    drawerStore.set(false)
+    $showDrawer = false
     goto('/login')
   }
 
   function signOut() {
-    userStore.set(null)
+    $user = null
   }
 </script>
 
@@ -91,22 +86,22 @@
   }
 </style>
 
-{#if showDrawer}
+{#if $showDrawer}
   <div class="drawer-overlay" transition:fade />
   <div
     class="drawer"
     in:fly={{ y: height }}
     out:fly={{ y: height }}
-    use:clickOutside={() => drawerStore.set(false)}>
+    use:clickOutside={() => ($showDrawer = false)}>
     <div class="flex justify-end">
       <button
-        on:click={() => drawerStore.set(false)}
+        on:click={() => ($showDrawer = false)}
         class="h-8 w-8 p-2 rounded-full focus:border-transparent">
         <Fa icon={faTimes} class="text-lg text-gray-600" />
       </button>
     </div>
-    {#if user}
-      <div>{user.name}</div>
+    {#if $user}
+      <div>{$user.name}</div>
       <div on:click={signOut}>Sign out</div>
     {:else}
       <div on:click={signIn}>Sign in</div>

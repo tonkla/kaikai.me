@@ -4,19 +4,16 @@
   import Fa from 'svelte-fa'
   import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
-  import { userStore } from '../store'
+  import { user } from '../store'
   import lang from '../locales/th.json'
 
-  let user = null
   let txtEmail = null
   let btnSignIn = null
   let email = 'admin@kaikai.me'
   let showMessage = false
 
-  userStore.subscribe(value => (user = value))
-
   onMount(() => {
-    if (user) goto('/')
+    if ($user) goto('/')
   })
 
   function signIn() {
@@ -28,9 +25,9 @@
     txtEmail.disabled = true
     btnSignIn.disabled = true
     showMessage = true
-    setTimeout(async () => {
-      userStore.update(() => ({ name: 'Admin', pictureUrl: 'https://i.pravatar.cc/100' }))
-      await goto('/')
+    setTimeout(() => {
+      $user = { name: 'Admin', pictureUrl: 'https://i.pravatar.cc/100' }
+      goto('/')
     }, 1500)
   }
 </script>

@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store'
 
-export const drawerStore = writable(false)
-export const userStore = writable(null)
+export const showDrawer = writable(false)
+export const user = writable(null)
