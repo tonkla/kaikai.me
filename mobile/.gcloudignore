@@ -1,0 +1,17 @@
+.tmp/
+.vscode/
+__sapper__/dev/
+node_modules/
+src/
+.DS_Store
+.env.example
+.eslintrc.json
+.gcloudignore
+.gitignore
+.prettierrc
+Makefile
+postcss.config.js
+README.md
+rollup.config.js
+tailwind.config.js
+tsconfig.json
