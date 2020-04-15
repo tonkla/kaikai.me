@@ -17,7 +17,7 @@
 
 <style>
   .btn {
-    @apply p-2 leading-snug text-gray-600 flex-1 flex flex-col items-center select-none;
+    @apply p-2 pt-3 leading-snug text-gray-600 flex-1 flex flex-col items-center select-none;
   }
   .btn:focus {
     @apply outline-none border-transparent;
@@ -28,21 +28,21 @@
 </style>
 
 <footer
-  class="fixed inset-x-0 bottom-0 h-12 px-3 bg-gray-300 border-t border-gray-400 flex items-stretch">
+  class="fixed bottom-0 inset-x-0 h-14 px-3 bg-gray-300 border-t border-gray-400 flex items-stretch">
   <button class="btn" class:active={segment === undefined} on:click={() => goto('/')}>
-    <Fa icon={faHome} class="text-lg" />
-    <span class="text-xs ">{lang.nav.home}</span>
+    <Fa icon={faHome} class="text-xl" />
+    <span class="text-sm">{lang.nav.home}</span>
   </button>
   <button class="btn" class:active={segment === 'charity'} on:click={() => goto('/charity')}>
-    <Fa icon={faHandHoldingHeart} class="text-lg" />
-    <span class="text-xs">{lang.nav.gain}/{lang.nav.give}</span>
+    <Fa icon={faHandHoldingHeart} class="text-xl" />
+    <span class="text-sm">{lang.nav.gain}/{lang.nav.give}</span>
   </button>
   <button class="btn" class:active={segment === 'commerce'} on:click={() => goto('/commerce')}>
-    <Fa icon={faShoppingCart} class="text-lg" />
-    <span class="text-xs">{lang.nav.buy}/{lang.nav.sell}</span>
+    <Fa icon={faShoppingCart} class="text-xl" />
+    <span class="text-sm">{lang.nav.buy}/{lang.nav.sell}</span>
   </button>
   <button class="btn" class:active={segment === 'post'} on:click={() => goto('/post')}>
-    <Fa icon={faBullhorn} class="text-lg" />
-    <span class="text-xs">{lang.nav.post}</span>
+    <Fa icon={faBullhorn} class="text-xl" />
+    <span class="text-sm">{lang.nav.post}</span>
   </button>
 </footer>

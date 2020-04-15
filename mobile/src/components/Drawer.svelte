@@ -6,6 +6,7 @@
   import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
   import { showDrawer, user } from '../store'
+  import lang from '../locales/th.json'
 
   let height = 0
 
@@ -79,7 +80,7 @@
     position: absolute;
     left: 0;
     top: 4rem;
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: white;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -102,9 +103,9 @@
     </div>
     {#if $user}
       <div>{$user.name}</div>
-      <div on:click={signOut}>Sign out</div>
+      <div on:click={signOut}>{lang.login.signOut}</div>
     {:else}
-      <div on:click={signIn}>Sign in</div>
+      <div on:click={signIn}>{lang.login.signIn}</div>
     {/if}
   </div>
 {/if}

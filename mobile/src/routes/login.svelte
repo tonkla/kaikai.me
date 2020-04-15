@@ -32,19 +32,22 @@
   }
 </script>
 
-<div>
-  <div class="flex justify-center text-gray-800">
+<div class="h-full p-4 pt-24 flex items-center flex-col">
+  <div class="w-full text-gray-800">
     <input
       bind:this={txtEmail}
       bind:value={email}
       placeholder={lang.login.email}
-      class="px-3 py-2 border rounded-lg flex-1" />
-    <button bind:this={btnSignIn} on:click={signIn} class="px-4 py-2 border rounded-lg ml-2">
+      class="w-full px-3 py-2 border rounded-lg text-center" />
+    <button
+      bind:this={btnSignIn}
+      on:click={signIn}
+      class="w-full mt-2 px-3 py-2 border rounded-lg primary">
       {lang.login.signIn}
     </button>
   </div>
   {#if showMessage}
-    <div class="ant-alert ant-alert-success mt-2">
+    <div class="ant-alert ant-alert-success mt-4">
       <Fa icon={faCheckCircle} class="ant-alert-success-icon" />
       <span class="ant-alert-message">{lang.login.signInMessage}</span>
     </div>

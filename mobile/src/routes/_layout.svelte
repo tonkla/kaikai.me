@@ -18,11 +18,11 @@
 {/if}
 
 {#if segment !== 'login'}
-  <main class="mt-10">
+  <main class="h-full overflow-y-scroll mt-12 mb-14">
     <slot />
   </main>
 {:else}
-  <main class="p-3">
+  <main class="h-full">
     <slot />
   </main>
 {/if}
