@@ -1,0 +1,8 @@
+build:
+  npm run build && gcloud builds submit --tag gcr.io/PROJECT_ID/NAME
+
+deploy:
+  gcloud run deploy NAME --image gcr.io/PROJECT_ID/NAME --platform managed --region asia-east1
+
+bad:
+  make build && make deploy
