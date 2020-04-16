@@ -2,7 +2,7 @@
   import Fa from 'svelte-fa'
   import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-  import { showDrawer, user } from '../store'
+  import { user } from '../store'
 </script>
 
 <style>
@@ -14,29 +14,23 @@
     object-fit: cover;
     border-radius: 50%;
   }
-  .btn:focus {
-    @apply border-none bg-gray-200;
+  .avatar {
+    @apply h-20 w-20 rounded-full border-2 flex items-center justify-center;
   }
 </style>
 
-<button id="btnDrawer" class="btn ml-2" on:click={() => ($showDrawer = true)}>
-  {#if $user}
-    {#if $user.pictureUrl}
-      <div class="h-8 w-8">
+{#if $user}
+  {#if $user.pictureUrl}
+    <div class="center">
+      <div class="avatar">
         <img src={$user.pictureUrl} alt="avatar" />
       </div>
-    {:else}
-      <div
-        class="h-8 w-8 border border-gray-400 rounded-full text-md text-gray-600 flex items-center
-        justify-center">
-        <Fa icon={faUser} />
-      </div>
-    {/if}
+    </div>
   {:else}
-    <div
-      class="h-8 w-8 border border-gray-400 rounded-full text-md text-gray-600 flex items-center
-      justify-center">
-      <Fa icon={faUser} />
+    <div class="center">
+      <div class="avatar">
+        <Fa icon={faUser} class="text-5xl text-gray-500" />
+      </div>
     </div>
   {/if}
-</button>
+{/if}

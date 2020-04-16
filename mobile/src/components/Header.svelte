@@ -1,8 +1,8 @@
 <script>
   import Fa from 'svelte-fa'
-  import { faChevronLeft, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons'
+  import { faBars, faChevronLeft, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 
-  import Avatar from './Avatar.svelte'
+  import { showDrawer } from '../store'
   import lang from '../locales/th.json'
 
   export let segment
@@ -12,20 +12,19 @@
   }
 </script>
 
-<style>
-  .btn:focus {
-    @apply border-transparent bg-gray-200;
-  }
-</style>
-
 <header class="fixed top-0 inset-x-0 h-12 bg-gray-300 inline-flex items-center">
   {#if segment === 'subpage'}
-    <button class="btn h-8 w-8 pl-2 ml-1 justify-start text-xl text-gray-600" on:click={back}>
+    <button class="btn h-8 w-8 pl-2 ml-1 justify-start text-gray-600" on:click={back}>
       <Fa icon={faChevronLeft} />
     </button>
   {:else}
-    <Avatar />
-    <div class="relative ml-2 mr-1 flex-1 flex items-center">
+    <button
+      id="btnDrawer"
+      class="h-6 w-6 ml-2 rounded-full text-gray-600"
+      on:click={() => ($showDrawer = true)}>
+      <Fa icon={faBars} />
+    </button>
+    <div class="relative ml-1 mr-1 flex-1 flex items-center">
       <input
         class="w-full pl-5 pr-8 py-2 border border-transparent rounded-full text-sm bg-gray-100
         focus:border-gray-400 focus:bg-white"
@@ -34,7 +33,7 @@
         <Fa icon={faSearch} />
       </button>
     </div>
-    <button class="btn h-8 w-8 mr-2 rounded-full text-gray-600">
+    <button class="h-6 w-6 mr-2 rounded-full text-gray-600">
       <Fa icon={faSlidersH} />
     </button>
   {/if}

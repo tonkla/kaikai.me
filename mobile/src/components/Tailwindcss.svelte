@@ -42,4 +42,9 @@
   .mb-14 {
     margin-bottom: 3.5rem;
   }
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

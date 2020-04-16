@@ -3,8 +3,9 @@
   import { fade, fly } from 'svelte/transition'
   import { goto } from '@sapper/app'
   import Fa from 'svelte-fa'
-  import { faTimes } from '@fortawesome/free-solid-svg-icons'
+  import { faSignInAlt, faSignOutAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+  import Avatar from './Avatar.svelte'
   import { showDrawer, user } from '../store'
   import lang from '../locales/th.json'
 
@@ -73,17 +74,19 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.7);
   }
-
   .drawer {
     height: 100%;
     width: 100%;
     position: absolute;
     left: 0;
     top: 4rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background-color: white;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+  }
+  .menu-item {
+    @apply px-3 py-2 rounded-lg bg-gray-200 flex items-center;
   }
 </style>
 
@@ -97,15 +100,24 @@
     <div class="flex justify-end">
       <button
         on:click={() => ($showDrawer = false)}
-        class="h-8 w-8 p-2 rounded-full focus:border-transparent">
+        class="h-8 w-8 p-2 pr-0 rounded-full focus:border-transparent">
         <Fa icon={faTimes} class="text-lg text-gray-600" />
       </button>
     </div>
+    <Avatar />
     {#if $user}
-      <div>{$user.name}</div>
-      <div on:click={signOut}>{lang.login.signOut}</div>
+      <div class="mt-1 text-center">{$user.name}</div>
+      <div class="mt-2">
+        <div on:click={signOut} class="menu-item">
+          <Fa icon={faSignOutAlt} class="text-gray-600" />
+          <span class="ml-2">{lang.login.signOut}</span>
+        </div>
+      </div>
     {:else}
-      <div on:click={signIn}>{lang.login.signIn}</div>
+      <div on:click={signIn} class="menu-item">
+        <Fa icon={faSignInAlt} class="text-gray-600" />
+        <span class="ml-2">{lang.login.signIn}</span>
+      </div>
     {/if}
   </div>
 {/if}
