@@ -7,12 +7,11 @@
 
 <style>
   img {
-    position: static;
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    text-align: center;
   }
   .avatar {
     @apply h-20 w-20 rounded-full border-2 flex items-center justify-center;

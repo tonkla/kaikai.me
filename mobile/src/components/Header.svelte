@@ -20,11 +20,11 @@
   {:else}
     <button
       id="btnDrawer"
-      class="h-6 w-6 ml-2 rounded-full text-gray-600"
+      class="h-9 w-9 ml-1 p-2 rounded-full text-gray-600"
       on:click={() => ($showDrawer = true)}>
       <Fa icon={faBars} />
     </button>
-    <div class="relative ml-1 mr-1 flex-1 flex items-center">
+    <div class="relative flex-1 flex items-center">
       <input
         class="w-full pl-5 pr-8 py-2 border border-transparent rounded-full text-sm bg-gray-100
         focus:border-gray-400 focus:bg-white"
@@ -33,7 +33,7 @@
         <Fa icon={faSearch} />
       </button>
     </div>
-    <button class="h-6 w-6 mr-2 rounded-full text-gray-600">
+    <button class="h-9 w-9 mr-1 p-2 rounded-full text-gray-600">
       <Fa icon={faSlidersH} />
     </button>
   {/if}

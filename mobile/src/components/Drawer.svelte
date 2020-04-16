@@ -42,7 +42,13 @@
 
     const handleClick = event => {
       const { target } = event
-      if (node && !node.isSameNode(target) && !isNestedChild(node, target) && !isParent(target)) {
+      if (
+        target.id !== 'btnDrawer' &&
+        node &&
+        !node.isSameNode(target) &&
+        !isNestedChild(node, target) &&
+        !isParent(target)
+      ) {
         onEventFunction()
       }
     }

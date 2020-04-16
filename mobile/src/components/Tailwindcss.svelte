@@ -36,8 +36,14 @@
 
   @tailwind utilities;
 
+  .h-9 {
+    height: 2.25rem;
+  }
   .h-14 {
     height: 3.5rem;
+  }
+  .w-9 {
+    width: 2.25rem;
   }
   .mb-14 {
     margin-bottom: 3.5rem;
