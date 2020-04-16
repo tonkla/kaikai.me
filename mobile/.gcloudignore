@@ -9,7 +9,7 @@ src/
 .gcloudignore
 .gitignore
 .prettierrc
-Makefile
+Makefile*
 postcss.config.js
 README.md
 rollup.config.js
