@@ -1,13 +1,13 @@
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: ['./**/**/*.html', './**/**/*.svelte'],
-
-  whitelistPatterns: [/svelte-/],
-
-  defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-})
-
-const production = process.env.NODE_ENV !== 'development'
-
 module.exports = {
-  plugins: [require('tailwindcss'), ...(production ? [purgecss] : [])],
+  plugins: [
+    require('tailwindcss')('./tailwind.config.js'),
+    process.env.NODE_ENV === 'production' ? require('autoprefixer') : null,
+    process.env.NODE_ENV === 'production'
+      ? require('@fullhuman/postcss-purgecss')({
+          content: ['./src/*.svelte', './src/**/*.svelte'],
+          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+        })
+      : null,
+    process.env.NODE_ENV === 'production' ? require('cssnano')({ preset: 'default' }) : null,
+  ],
 }
