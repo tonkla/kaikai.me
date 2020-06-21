@@ -1,0 +1,13 @@
+{
+  "name": "kaikai-api",
+  "description": "KaiKai API",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonkla/kaikai.me.git"
+  },
+  "author": "Surakarn Samkaew <tonkla@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+}
+
